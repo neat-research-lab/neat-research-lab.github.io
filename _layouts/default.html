@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{{ "/assets/style.css" | relative_url }}">
+</head>
+<body class="parallax-bg">
+    <header>
+        <div class="logo">
+            <img src="{{ "/assets/icons/logo.png" | relative_url }}" alt="NEAT Lab Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ "/" | relative_url }}" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
+                <li><a href="{{ "/members.html" | relative_url }}" {% if page.url == "/members.html" %}class="active"{% endif %}>About Us</a></li>
+                <li><a href="{{ "/publications.html" | relative_url }}" {% if page.url == "/publications.html" %}class="active"{% endif %}>Publications</a></li>
+                <li><a href="{{ "/news.html" | relative_url }}" {% if page.url == "/news.html" %}class="active"{% endif %}>News</a></li>
+                <li><a href="{{ "/contact.html" | relative_url }}" {% if page.url == "/contact.html" %}class="active"{% endif %}>Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {{ content }}
+    </main>
+    <footer>
+        <div class="footer-main">
+            <div class="footer-logo">
+                <img src="{{ "/assets/icons/logo.png" | relative_url }}" alt="NEAT Lab Logo">
+                <img src="{{ "/assets/icons/wwu_logo.jpg" | relative_url }}" alt="WWU Logo">
+            </div>
+            <!-- <div class="footer-links">
+                <a href="{{ "/" | relative_url }}">Home</a>
+                <a href="{{ "/members.html" | relative_url }}">About Us</a>
+                <a href="{{ "/publications.html" | relative_url }}">Publications</a>
+                <a href="{{ "/news.html" | relative_url }}">News</a>
+                <a href="{{ "/contact.html" | relative_url }}">Contact</a>
+            </div> -->
+            <div class="social-media">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
