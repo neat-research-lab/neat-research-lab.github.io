@@ -369,6 +369,7 @@ h1 {
     display: flex; /* Use flexbox for internal alignment */
     flex-direction: column; /* Stack items vertically */
     align-items: center; /* Center items horizontally within the card */
+    position: relative; /* Add relative positioning for the badge */
 }
 
 .member-card:hover {
@@ -381,7 +382,7 @@ h1 {
     height: 150px; /* Fixed height for square consistency */
     display: block; /* Ensure margin auto works */
     margin: 0 auto 15px auto; /* Center image horizontally and reduce bottom margin */
-    border-radius: 0; /* Ensure images are rectangular */
+    border-radius: 15px; /* Smoothen the corners */
     object-fit: cover; /* Maintain aspect ratio and cover the area */
     border: 4px solid #fff;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -464,6 +465,38 @@ h1 {
 
 .member-links a:hover {
     color: #ff69b4;
+}
+
+.webmaster-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #28a745;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 1;
+}
+
+.lab-manager-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: gold;
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.member-card.has-badge:hover .lab-manager-badge {
+    opacity: 1;
 }
 
 .member-actions {
