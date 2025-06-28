@@ -76,6 +76,14 @@ nav a.active {
 main {
     padding: 40px 20px;
     flex-grow: 1;
+    display: flex; /* Enable flexbox for main content */
+    justify-content: center; /* Center content */
+}
+
+.container {
+    max-width: 1200px; /* Consistent max-width for main content */
+    width: 100%; /* Ensure it takes full width up to max-width */
+    margin: 0 auto; /* Center the container */
 }
 
 section {
@@ -84,7 +92,7 @@ section {
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    max-width: 1200px;
+    max-width: 1200px; /* This will be overridden by .container for consistency */
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.5s forwards;
@@ -260,11 +268,82 @@ h1 {
     border-bottom: none;
 }
 
+.members-container {
+    display: flex;
+    max-width: 1200px; /* Consistent max-width for all pages */
+    margin: 0 auto;
+    gap: 30px;
+    align-items: flex-start; /* Align items to the top */
+}
+
+.members-nav {
+    flex: 0 0 200px; /* Reduced width for navigation */
+    background: #ffffff;
+    padding: 25px; /* Increased padding */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 100px; /* Adjust based on header height */
+    align-self: flex-start; /* Stick to the top of the container */
+    border: 1px solid #e0e0e0; /* Subtle border */
+}
+
+.members-nav h3 {
+    color: #8a2be2;
+    margin-top: 0;
+    border-bottom: 2px solid #8a2be2;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.4rem; /* Larger heading */
+}
+
+.members-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.members-nav li {
+    margin-bottom: 12px; /* Increased spacing */
+}
+
+.members-nav a {
+    text-decoration: none;
+    color: #343a40;
+    font-weight: 500;
+    padding: 8px 10px; /* Add padding for clickable area */
+    display: block; /* Make the whole area clickable */
+    border-radius: 8px; /* Rounded corners for links */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.members-nav a:hover {
+    background-color: #f0f0f0; /* Light background on hover */
+    color: #ff69b4;
+    transform: translateX(5px); /* Slight slide effect */
+}
+
+#members-content {
+    flex-grow: 1;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0; /* Subtle border */
+}
+
 .members-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(4, 1fr); /* Adjusted for 4 members per row */
+    gap: 20px; /* Reduced gap for tighter fit */
     margin-bottom: 30px;
+    align-items: stretch; /* Ensure cards in the same row have equal height */
+}
+
+.professors-grid {
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center the items horizontally */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    gap: 20px; /* Maintain the gap between cards */
 }
 
 .member-card {
@@ -272,9 +351,11 @@ h1 {
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
-    text-align: center;
-    padding: 30px 20px;
+    padding: 25px; /* Equal padding on all sides */
     border: 1px solid #f0f0f0;
+    display: flex; /* Use flexbox for internal alignment */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally within the card */
 }
 
 .member-card:hover {
@@ -283,22 +364,34 @@ h1 {
 }
 
 .member-card img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
+    width: 150px; /* Fixed width for consistency */
+    height: 150px; /* Fixed height for square consistency */
+    display: block; /* Ensure margin auto works */
+    margin: 0 auto 15px auto; /* Center image horizontally and reduce bottom margin */
+    border-radius: 0; /* Ensure images are rectangular */
+    object-fit: cover; /* Maintain aspect ratio and cover the area */
     border: 4px solid #fff;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
+}
+
+.professors-grid .member-card img {
+    height: auto;
+    aspect-ratio: 1/1; /* Make professor images square */
 }
 
 .member-info {
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Center all text content within member-info */
 }
 
 .member-info h3 {
     margin: 0 0 5px 0;
-    font-size: 1.25rem;
+    font-size: 1.1rem; /* Slightly smaller font for names */
+    text-align: center; /* Center the name text */
+    width: 100%; /* Ensure the heading takes full width to center text */
 }
 
 .member-info h3 a {
@@ -312,9 +405,9 @@ h1 {
 }
 
 .member-info p {
-    font-size: 0.9rem;
+    font-size: 0.85rem; /* Slightly smaller font for descriptions */
     color: #666;
-    line-height: 1.6;
+    line-height: 1.4;
     margin-bottom: 5px;
 }
 
@@ -333,6 +426,31 @@ h1 {
     color: #999;
     display: block;
     margin-top: 10px;
+}
+
+.research-interests {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 5px 0 10px 0;
+    text-align: center;
+}
+
+.member-links {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: center; /* Center the icons horizontally */
+    align-items: center; /* Vertically align icons if they have different heights */
+}
+
+.member-links a {
+    color: #8a2be2;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.member-links a:hover {
+    color: #ff69b4;
 }
 
 .member-actions {
@@ -437,4 +555,24 @@ footer {
     /* border-top: 1px solid #dee2e6; */
     font-size: 14px;
     color: #6c757d;
+}
+
+.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.contact-content > div {
+    flex: 1;
+    min-width: 300px; /* Adjust as needed for responsiveness */
+}
+
+.map-container {
+    height: 400px; /* Fixed height for the map */
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
